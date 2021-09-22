@@ -15,7 +15,9 @@ use Illuminate\Support\Facades\Route;
 #use App\Http\Controllers\HelloWorldController;
 
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\SeriesController;
 
 #Route::get('/', [HelloWorldController::class, 'helloWorld']);
 
-Route::get('/', [IndexController::class, 'getIndex']);
+Route::get('/', [IndexController::class, 'index']);
+Route::get('/series', [SeriesController::class, 'index']);

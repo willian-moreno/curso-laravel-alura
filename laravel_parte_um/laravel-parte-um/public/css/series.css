@@ -1,0 +1,11 @@
+.contentall {
+    background-color: skyblue;
+}
+
+nav>div>ul>li>a {
+    font-size: 1.5em;
+}
+
+.cardsection {
+    margin: 2%;
+}
