@@ -30,7 +30,7 @@
             <ul class="list-group">
                 @foreach ($series as $serie)
                 <li class="list-group-item">
-                    <h6>{{$serie->nome}}</h6>
+                    <h6>{{$serie->id}}{{$serie->nome}}</h6>
                 </li>
                 @endforeach
             </ul>
