@@ -1,11 +1,13 @@
 .contentall {
-    background-color: skyblue;
+    background-color: azure;
 }
 
 nav>div>ul>li>a {
     font-size: 1.5em;
 }
 
-.cardsection {
+.cardsection,
+.addSerie {
     margin: 2%;
+
 }

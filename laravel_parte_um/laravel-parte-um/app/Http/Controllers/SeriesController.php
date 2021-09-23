@@ -15,6 +15,11 @@ class SeriesController extends Controller
             'The punisher'
         );
 
-        return view('./series/index', compact('series'));
+        return view('series.index', compact('series'));
+    }
+
+    function create()
+    {
+        return view('series.create');
     }
 }
