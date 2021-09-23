@@ -19,11 +19,10 @@
 
     @yield('navbar')
 
-    <body class="contentall">
-
+    <div class="contentall">
         @yield('conteudo')
+    </div>
 
-    </body>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

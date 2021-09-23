@@ -7,6 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/app.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/index.css')}}">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -15,7 +16,11 @@
 
 <body>
 
-    @yield('conteudo')
+    @include('navbar')
+
+    <div class="contentall">
+        @yield('conteudo')
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

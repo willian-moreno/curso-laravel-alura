@@ -10,7 +10,7 @@
                 <a class="nav-link" href="{{ url('/') }}">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="{{ url('/series') }}">Series</a>
+                <a class="nav-link" href="{{ url('/series') }}">Series</a>
             </li>
         </ul>
     </div>

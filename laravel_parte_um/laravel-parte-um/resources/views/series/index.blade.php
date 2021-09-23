@@ -13,7 +13,7 @@
                 <a class="nav-link" href="{{ url('/') }}">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="{{ url('/series') }}">Series</a>
+                <a class="nav-link" href="{{ url('/series') }}">Series</a>
             </li>
         </ul>
     </div>
@@ -21,24 +21,20 @@
 @endsection
 
 @section('conteudo')
-<div class="addSerie">
-    <a name="" id="" class="btn btn-dark" href="{{ url ('/series/create')}}" role="button">Adicionar Série</a>
-</div>
-
 <section class="cardsection">
     <div class="card">
-        <img class="card-img-top" src="holder.js/100x180/" alt="">
         <div class="card-body">
             <h2 class="card-title">Séries</h2>
+            <a href="{{ url ('/series/create')}}" class="btn btn-dark mb-4" name="" id="" role="button">Adicionar
+                Série</a>
             <ul class="list-group">
                 @foreach ($series as $serie)
                 <li class="list-group-item">
-                    <h6>{{$serie}}</h6>
+                    <h6>{{$serie->nome}}</h6>
                 </li>
                 @endforeach
             </ul>
         </div>
-    </div>
     </div>
 </section>
 @endsection
