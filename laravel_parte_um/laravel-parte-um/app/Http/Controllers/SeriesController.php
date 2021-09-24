@@ -25,15 +25,11 @@ class SeriesController extends Controller
     function store(Request $request)
     {
         try {
-            $nome = $request->nome;
-            Series::create([
-                'nome' => $nome
-            ]);
-            # echo "<script>alert('Série $nome adicionada!')</script>";
+            $serie = Series::create($request->all());
         } catch (\Throwable $th) {
             echo $th;
         } finally {
-            return view('series.create', compact('nome'));
+            return view('series.create', compact('serie'));
         }
     }
 }

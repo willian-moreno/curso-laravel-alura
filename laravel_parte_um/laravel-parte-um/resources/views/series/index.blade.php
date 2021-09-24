@@ -1,39 +1,55 @@
 @extends('series.layout')
 
 @section('navbar')
-<nav class="navbar navbar-expand-xl navbar-dark" style="background-color: #246B85">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample06"
-        aria-controls="navbarsExample06" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarsExample06">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/') }}">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/series') }}">Series</a>
-            </li>
-        </ul>
-    </div>
-</nav>
+@include('../navbar')
 @endsection
 
 @section('conteudo')
 <section class="cardsection">
     <div class="card">
         <div class="card-body">
-            <h2 class="card-title">Séries</h2>
-            <a href="{{ url ('/series/create')}}" class="btn btn-dark mb-4" name="" id="" role="button">Adicionar
-                Série</a>
-            <ul class="list-group">
-                @foreach ($series as $serie)
-                <li class="list-group-item">
-                    <h6>{{$serie->id}}{{$serie->nome}}</h6>
-                </li>
-                @endforeach
-            </ul>
+            <a href="{{ url ('/series/create')}}" class="btn btn-dark mb-4" name="" id="" role="button">
+                Adicionar
+            </a>
+            <div class="table-responsive">
+                <h4 class="card-title">Lista de séries</h4>
+                <table class="table table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th class="col-10">NOME</th>
+                            <th class="col-1"></th>
+                            <th class="col-1"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($series as $serie)
+                        <tr>
+                            <td class="align-middle">{{$serie->nome}}</td>
+                            <td>
+                                <button type="button" class="btn btn-primary row">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-pen-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z" />
+                                    </svg>
+                                    Editar
+                                </button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-danger row">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+                                    </svg>
+                                    Excluir
+                                </button>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </section>

@@ -7,10 +7,18 @@
     <div class="collapse navbar-collapse" id="navbarsExample06">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('/') }}">Home</a>
+                @if(Request::segment(1) == '')
+                    <a class="nav-link active" href="{{ url('/') }}">Home</a>
+                @else
+                    <a class="nav-link" href="{{ url('/') }}">Home</a>
+                @endif
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('/series') }}">Series</a>
+                @if(Request::segment(1) == 'series')
+                    <a class="nav-link active" href="{{ url('/series') }}">Series</a>
+                @else
+                    <a class="nav-link" href="{{ url('/series') }}">Series</a>
+                @endif
             </li>
         </ul>
     </div>

@@ -2,10 +2,6 @@
     background-color: azure;
 }
 
-nav>div>ul>li>a {
-    font-size: 1.5em;
-}
-
 .addSerie {
     margin: 2%;
 }
