@@ -13,10 +13,10 @@
             </a>
             <div class="table-responsive">
                 <h4 class="card-title">Lista de séries</h4>
-                <table class="table table-striped table-sm">
+                <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th class="col-10">NOME</th>
+                            <th class="col-10 h6">NOME</th>
                             <th class="col-1"></th>
                             <th class="col-1"></th>
                         </tr>
