@@ -4,26 +4,25 @@
 <section class="cardsection">
     <div class="card">
         <div class="card-body">
-            <h2 class="card-title">Adicionar nova série</h2>
+            <h2 class="card-title">Atualizar série: {{$data->nome}}</h2>
             <form method="post">
                 @csrf
                 <!-- Obrigatorio. Serve para proteger contra requisicoes externas -->
                 <!-- Campo nome -->
                 <div class="form-group">
                     <label for="nome" class="h5">Nome</label>
-                    <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome da série">
+                    <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome da série" value="{{$data->nome}}">
                 </div>
                 <!-- Botoes -->
                 <div class="row col-sm-2 col-sm-2">
-                    <input name="salvar" id="salvar" class="btn btn-primary mr-2" type="submit" value="Salvar">
+                    <form method="post" action="/series/update/{{$data->id}}">
+                        @csrf
+                        @method('put')
+                        <button name="atualizar" id="atualizar" class="btn btn-primary mr-2" type="submit">Atualizar</button>
+                    </form>
                     <a href="{{ url ('/series')}}" class="btn btn-dark" role="button">Voltar</a>
                 </div>
             </form>
-            @if (!empty($serie))
-                <div class="mt-4 alert alert-success" role="alert">
-                    Série <b>{{$serie->nome ?? ''}}</b> adicionada!
-                </div>
-            @endif
         </div>
     </div>
     </div>

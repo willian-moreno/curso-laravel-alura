@@ -23,3 +23,6 @@ Route::get('/', [IndexController::class, 'index']);
 Route::get('/series', [SeriesController::class, 'index']);
 Route::get('/series/create', [SeriesController::class, 'create']);
 Route::post('/series/create', [SeriesController::class, 'store']);
+Route::post('/series/update/{id}', [SeriesController::class, 'update']);
+Route::put('/series/update/{id}', [SeriesController::class, 'updated']);
+Route::delete('/series/{id}', [SeriesController::class, 'delete']);
