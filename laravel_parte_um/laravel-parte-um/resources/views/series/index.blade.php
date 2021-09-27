@@ -46,7 +46,8 @@
                                     </form>
                                 </td>
                                 <td>
-                                    <form method="post" action="/series/{{$serie->id}}">
+                                    <form method="post" action="/series/{{$serie->id}}"
+                                        onsubmit="return confirm('Tem Certeza que deseja excluir a série {{$serie->nome}}?')">
                                         @csrf
                                         @method('delete');
                                         <button name="delete_serie" type="submit" class="btn btn-danger row">
