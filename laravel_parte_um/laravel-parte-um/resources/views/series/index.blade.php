@@ -11,6 +11,11 @@
             <a href="{{ url ('/series/create')}}" class="btn btn-dark mb-4" name="" id="" role="button">
                 Adicionar
             </a>
+            @if (($msg ?? '') != null)
+            <div class="alert alert-info" role="alert">
+                A série <b>{{$msg ?? ''}}</b> foi a última adicionada!
+            </div>
+            @endif
             <div class="table-responsive">
                 <h4 class="card-title">Lista de séries</h4>
                 <table class="table table-striped">

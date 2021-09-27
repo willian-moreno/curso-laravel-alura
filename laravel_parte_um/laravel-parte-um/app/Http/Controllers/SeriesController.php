@@ -9,12 +9,14 @@ use Mockery\Undefined;
 
 class SeriesController extends Controller
 {
-    function index()
+    function index(Request $request)
     {
         $series = Series::query()
             ->orderBy('nome')
             ->get();
-        return view('series.index', compact('series'));
+
+        $msg = $request->session()->get('serie');
+        return view('series.index', compact('series', 'msg'));
     }
 
     function create()
@@ -26,6 +28,9 @@ class SeriesController extends Controller
     {
         try {
             $serie = Series::create($request->all());
+            $request
+                ->session()
+                ->put('serie', $serie->nome);
         } catch (\Throwable $th) {
             echo $th;
         } finally {
