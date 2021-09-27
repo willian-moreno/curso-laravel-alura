@@ -19,10 +19,10 @@ use App\Http\Controllers\SeriesController;
 
 #Route::get('/', [HelloWorldController::class, 'helloWorld']);
 
-Route::get('/', [IndexController::class, 'index']);
-Route::get('/series', [SeriesController::class, 'index']);
-Route::get('/series/create', [SeriesController::class, 'create']);
-Route::post('/series/create', [SeriesController::class, 'store']);
-Route::post('/series/update/{id}', [SeriesController::class, 'update']);
-Route::put('/series/update/{id}', [SeriesController::class, 'updated']);
-Route::delete('/series/{id}', [SeriesController::class, 'delete']);
+Route::get('/', [IndexController::class, 'index'])->name('home');
+Route::get('/series', [SeriesController::class, 'index'])->name('listar_series');
+Route::get('/series/create', [SeriesController::class, 'create'])->name('criar_serie_get');
+Route::post('/series/create', [SeriesController::class, 'store'])->name('criar_serie_post');
+Route::post('/series/update/{id}', [SeriesController::class, 'update'])->name('atualizar_serie_post');
+Route::put('/series/update/{id}', [SeriesController::class, 'updated'])->name('atualizar_serie_put');
+Route::delete('/series/{id}', [SeriesController::class, 'delete'])->name('deletar_serie');
