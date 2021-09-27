@@ -19,10 +19,10 @@
                     <a href="{{ url ('/series')}}" class="btn btn-dark" role="button">Voltar</a>
                 </div>
             </form>
-            @if (strlen($serie ?? '') > 0 && !empty($serie ?? ''))
-            <div class="mt-4 alert alert-success" role="alert">
-                Série {{$serie->nome ?? ''}} adicionada!
-            </div>
+            @if (strlen($serie ?? '') > 0)
+                <div class="mt-4 alert alert-success" role="alert">
+                    Série <b>{{$serie->nome ?? ''}}</b> adicionada!
+                </div>
             @endif
         </div>
     </div>

@@ -30,7 +30,8 @@ class SeriesController extends Controller
             $serie = Series::create($request->all());
             $request
                 ->session()
-                ->put('serie', $serie->nome);
+                # O Flash permite que a sessao seja vista somente em uma requisicao;
+                ->flash('serie', $serie->nome);
         } catch (\Throwable $th) {
             echo $th;
         } finally {
