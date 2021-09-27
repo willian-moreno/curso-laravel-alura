@@ -18,9 +18,9 @@ class CriarTabelaSeries extends Migration
         // Na primeira vez, no Linux, rodar: sudo apt-get install php-sqlite3
         // Depois rodar: php artisan migrate (Para criar as tabelas)
 
-        Schema::create('series', function (Blueprint $table) {
-            $table->string('nome');
-        });
+        // Schema::create('series', function (Blueprint $table) {
+        //     $table->string('nome');
+        // });
     }
 
     /**

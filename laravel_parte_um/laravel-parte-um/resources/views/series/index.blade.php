@@ -16,7 +16,8 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th class="col-10 h6">NOME</th>
+                            <th class="col-1 h6">ID</th>
+                            <th class="col-9 h6">NOME</th>
                             <th class="col-1"></th>
                             <th class="col-1"></th>
                         </tr>
@@ -24,6 +25,7 @@
                     <tbody>
                         @foreach ($series as $serie)
                         <tr>
+                            <td class="align-middle">{{$serie->id}}</td>
                             <td class="align-middle">{{$serie->nome}}</td>
                             <td>
                                 <button type="button" class="btn btn-primary row">
