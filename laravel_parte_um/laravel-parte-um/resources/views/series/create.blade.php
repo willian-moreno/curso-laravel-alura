@@ -1,5 +1,10 @@
 @extends('series.layout')
 
+@section('breadcrumb')
+<li class="breadcrumb-item" aria-current="page">Séries</li>
+<li class="breadcrumb-item active" aria-current="page">Create</li>
+@endsection
+
 @section('conteudo')
 <section class="cardsection">
     <div class="card">
@@ -20,9 +25,18 @@
                 </div>
             </form>
             @if (!empty($serie))
-                <div class="mt-4 alert alert-success" role="alert">
-                    Série <b>{{$serie->nome ?? ''}}</b> adicionada!
-                </div>
+            <div class="mt-4 alert alert-success" role="alert">
+                <i class="bi bi-check-lg">&nbsp;Série <b>{{$serie->nome ?? ''}}</b> adicionada!</i>
+            </div>
+            @endif
+            @if ($errors->any())
+            <div class=" mt-4 pl-5 pr-5 alert alert-danger">
+                <ol class="m-0">
+                    @foreach ($errors->all() as $error)
+                    <li>{!!$error!!}</li>
+                    @endforeach
+                </ol>
+            </div>
             @endif
         </div>
     </div>

@@ -15,9 +15,9 @@
             </li>
             <li class="nav-item">
                 @if(Request::segment(1) == 'series')
-                    <a class="nav-link active" href="{{ url('/series') }}">Series</a>
+                    <a class="nav-link active" href="{{ url('/series') }}">Séries</a>
                 @else
-                    <a class="nav-link" href="{{ url('/series') }}">Series</a>
+                    <a class="nav-link" href="{{ url('/series') }}">Séries</a>
                 @endif
             </li>
         </ul>

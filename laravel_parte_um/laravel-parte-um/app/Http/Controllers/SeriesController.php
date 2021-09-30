@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SeriesFormRequest;
 use App\Models\Series;
 use Illuminate\Http\Request;
 use Mockery\Undefined;
@@ -28,7 +29,7 @@ class SeriesController extends Controller
         return view('series.create');
     }
 
-    function store(Request $request)
+    function store(SeriesFormRequest $request)
     {
         try {
             $serie = Series::create($request->all());
@@ -39,7 +40,9 @@ class SeriesController extends Controller
         } catch (\Throwable $th) {
             $request->session()->flash('status_serie', "Erro!: $th");
         } finally {
-            return view('series.create', compact('serie'));
+            if (!empty($request->nome)) {
+                return view('series.create', compact('serie'));
+            }
         }
     }
 

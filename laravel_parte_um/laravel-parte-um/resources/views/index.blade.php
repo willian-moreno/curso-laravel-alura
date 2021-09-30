@@ -1,5 +1,9 @@
 @extends('layout')
 
+@section('breadcrumb')
+<li class="breadcrumb-item active" aria-current="page">Home</li>
+@endsection
+
 @section('conteudo')
 <div class="column">
     <div class="row">
