@@ -24,7 +24,9 @@ class SeriesFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome' => 'required|min:3'
+            'nome' => 'required|min:3|max:255',
+            'qtd_temporadas' => 'required|digits_between:1,50',
+            'qtd_episodios' => 'required|digits_between:1,100',
         ];
     }
 
@@ -32,7 +34,13 @@ class SeriesFormRequest extends FormRequest
     {
         return [
             'required' => 'Campo <b>:attribute</b> obrigatório',
-            'min' => 'O campo <b>:attribute</b> requer o mínimo de 3 caracteres',
+
+            'nome.min' => 'O campo <b>:attribute</b> requer no mínimo de 3 caracteres',
+            'nome.max' => 'O campo <b>:attribute</b> permite o máximo de 255 caracteres',
+
+            'qtd_temporadas.digits_between' => 'O campo <b>:attribute</b> requer no mínimo 1 e no máximo 50 temporadas',
+
+            'qtd_episodios.digits_between' => 'O campo <b>:attribute</b> requer no mínimo 1 e no máximo 100 episódios',
         ];
     }
 }

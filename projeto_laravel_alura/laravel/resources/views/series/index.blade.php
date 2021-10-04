@@ -26,7 +26,8 @@
                     <thead>
                         <tr>
                             <th class="col-1 h6 font-weight-bold">ID</th>
-                            <th class="col-9 h6 font-weight-bold">NOME</th>
+                            <th class="col-8 h6 font-weight-bold">NOME</th>
+                            <th class="col-1"></th>
                             <th class="col-1"></th>
                             <th class="col-1"></th>
                         </tr>
@@ -36,20 +37,29 @@
                         <tr>
                             <td class="align-middle">{{$serie->id}}</td>
                             <td class="align-middle">{{$serie->nome}}</td>
-                            <td>
+                            <td class="align-middle">
+                                <form method="post" action="/series/{{$serie->id}}/temporadas">
+                                    @csrf
+                                    @method('get')
+                                    <button name="detalhes" type="submit" class="btn btn-link p-0">
+                                        <i class="bi bi-three-dots"></i>
+                                    </button>
+                                </form>
+                            </td>
+                            <td class="align-middle">
                                 <form method="post" action="/series/update/{{$serie->id}}">
                                     @csrf
-                                    <button name="update_serie" type="submit" class="btn btn-primary btn-sm row">
+                                    <button name="update_serie" type="submit" class="btn btn-primary btn-sm">
                                         <i class="bi bi-pencil-square"></i>
                                     </button>
                                 </form>
                             </td>
-                            <td>
+                            <td class="align-middle">
                                 <form method="post" action="/series/{{$serie->id}}"
                                     onsubmit="return confirm('Tem certeza que deseja excluir a série {{addslashes($serie->nome)}}?')">
                                     @csrf
-                                    @method('delete');
-                                    <button name="delete_serie" type="submit" class="btn btn-danger btn-sm row">
+                                    @method('delete')
+                                    <button name="delete_serie" type="submit" class="btn btn-danger btn-sm">
                                         <i class="bi bi-trash-fill"></i>
                                     </button>
                                 </form>

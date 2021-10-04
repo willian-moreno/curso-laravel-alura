@@ -9,8 +9,11 @@ class Episodios extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+    protected $fillable = ['numero'];
+
     public function temporada()
     {
-        $this->belongsTo(Temporadas::class);
+        return $this->belongsTo(Temporadas::class);
     }
 }

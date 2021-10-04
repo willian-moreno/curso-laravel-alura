@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SeriesFormRequest;
+use App\Models\Episodios;
 use App\Models\Series;
+use App\Models\Temporadas;
 use Illuminate\Http\Request;
 use Mockery\Undefined;
 
@@ -32,11 +34,25 @@ class SeriesController extends Controller
     function store(SeriesFormRequest $request)
     {
         try {
-            $serie = Series::create($request->all());
+            $nomeSerie = $request->nome;
+            $qtdTemporadas = $request->qtd_temporadas;
+            $qtdEpisodios = $request->qtd_episodios;
+            $serie = Series::create(['nome' => $nomeSerie]);
+            for ($i = 1; $i <= $qtdTemporadas; $i++) {
+                $temporada = $serie->temporadas()->create(['numero' => $i]);
+                for ($j = 1; $j <= $qtdEpisodios; $j++) {
+                    $temporada->episodios()->create(['numero' => $j]);
+                }
+            }
             $request
                 ->session()
                 # O Flash permite que a sessao seja vista somente em uma requisicao;
-                ->flash('status_serie', "A série <b>$serie->nome</b> foi a última adicionada!");
+                ->flash(
+                    'status_serie',
+                    "A série <b>$nomeSerie</b> foi a última adicionada! <br>
+                     Quantidade de Temporadas: <b>$qtdTemporadas</b> <br>
+                     Quantidade de Episódios: <b>$qtdEpisodios</b>"
+                );
         } catch (\Throwable $th) {
             $request->session()->flash('status_serie', "Erro!: $th");
         } finally {
@@ -79,14 +95,20 @@ class SeriesController extends Controller
         try {
             $id = $request->id;
             $serie = Series::query()->where('id', '=', $id)->get();
+            $temporadas = Temporadas::query()->where('series_id', '=', $id)->get();
+            foreach ($temporadas as $key => $temporada) {
+                Episodios::where('temporadas_id', '=', $temporada->id)->delete();
+            }
+            Temporadas::where('series_id', '=', $id)->delete();
+            Series::destroy($request->id);
             foreach ($serie as $key => $value) {
                 $request->session()->flash('status_serie', "A série <b>$value->nome</b> foi deletada!");
             }
-            Series::destroy($request->id);
         } catch (\Throwable $th) {
             $request->session()->flash('status_serie', "Erro!: $th");
         } finally {
             return redirect('/series');
         }
     }
+
 }

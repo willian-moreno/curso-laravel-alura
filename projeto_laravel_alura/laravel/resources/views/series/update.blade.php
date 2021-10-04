@@ -3,7 +3,6 @@
 @section('breadcrumb')
 <li class="breadcrumb-item" aria-current="page">Séries</li>
 <li class="breadcrumb-item" aria-current="page">Update</li>
-<li class="breadcrumb-item active" aria-current="page">{{$data->id}}</li>
 @endsection
 
 @section('conteudo')

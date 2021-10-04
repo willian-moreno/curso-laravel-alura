@@ -15,7 +15,11 @@ class CreateEpisodiosTable extends Migration
     {
         Schema::create('episodios', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->integer('numero');
+            $table->unsignedBigInteger('temporadas_id');
+            $table->foreign('temporadas_id')
+                ->references('id')
+                ->on('temporadas');
         });
     }
 
