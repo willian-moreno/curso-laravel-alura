@@ -5,9 +5,9 @@
 @endsection
 
 @section('conteudo')
-<div class="column">
+<div class="column m-3">
     <div class="row">
-        <div class="card card m-2 col" style="width: 18rem;">
+        <div class="card card m-2 col-md">
             <div class="card-body">
                 <h5 class="card-title">Título do card</h5>
                 <h6 class="card-subtitle mb-2 text-muted">Subtitulo do card</h6>
@@ -16,7 +16,7 @@
                 <a href="#" class="card-link">Link do card</a>
             </div>
         </div>
-        <div class="card card m-2 col" style="width: 18rem;">
+        <div class="card card m-2 col-md">
             <div class="card-body">
                 <h5 class="card-title">Título do card</h5>
                 <h6 class="card-subtitle mb-2 text-muted">Subtitulo do card</h6>
@@ -27,7 +27,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="card card m-2 col" style="width: 18rem;">
+        <div class="card card m-2 col-md">
             <div class="card-body">
                 <h5 class="card-title">Título do card</h5>
                 <h6 class="card-subtitle mb-2 text-muted">Subtitulo do card</h6>
@@ -36,7 +36,7 @@
                 <a href="#" class="card-link">Link do card</a>
             </div>
         </div>
-        <div class="card card m-2 col" style="width: 18rem;">
+        <div class="card card m-2 col-md">
             <div class="card-body">
                 <h5 class="card-title">Título do card</h5>
                 <h6 class="card-subtitle mb-2 text-muted">Subtitulo do card</h6>
