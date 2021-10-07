@@ -2,9 +2,7 @@
 
 namespace App\Services;
 
-use App\Models\Episodios;
-use App\Models\Series;
-use App\Models\Temporadas;
+use App\Models\{Series, Episodios, Temporadas};
 
 class SerieService
 {
