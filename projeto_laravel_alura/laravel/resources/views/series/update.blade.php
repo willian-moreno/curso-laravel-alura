@@ -20,14 +20,13 @@
                         value="{{$data->nome}}" required>
                 </div>
                 <!-- Botoes -->
-                <div class="row col-sm-2 col-sm-2">
+                <div class="form-row">
                     <form method="post" action="/series/update/{{$data->id}}">
                         @csrf
                         @method('put')
-                        <button name="atualizar" id="atualizar" class="btn btn-primary mr-2"
-                            type="submit">Atualizar</button>
+                        <button name="atualizar" id="atualizar" class="col-md-1 btn btn-primary m-2" type="submit">Atualizar</button>
+                        <a href="{{ url ('/series')}}" class="col-md-1 btn btn-dark m-2" role="button">Voltar</a>
                     </form>
-                    <a href="{{ url ('/series')}}" class="btn btn-dark" role="button">Voltar</a>
                 </div>
             </form>
         </div>

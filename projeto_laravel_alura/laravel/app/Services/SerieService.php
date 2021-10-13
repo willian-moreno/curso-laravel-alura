@@ -3,21 +3,22 @@
 namespace App\Services;
 
 use App\Models\{Series, Episodios, Temporadas};
+use Illuminate\Support\Facades\DB;
 
 class SerieService
 {
 
     public function getListSeries()
     {
-        $series = Series::query()
-            ->orderBy('nome')
-            ->get();
-
+        DB::beginTransaction();
+        $series = Series::query()->orderBy('nome')->get();
+        DB::commit();
         return $series;
     }
 
     public function save(string $nome, int $temporadas, int $episodios)
     {
+        DB::beginTransaction();
         $qtdTemporadas = $temporadas;
         $qtdEpisodios = $episodios;
         $serie = Series::create(['nome' => $nome]);
@@ -27,33 +28,34 @@ class SerieService
                 $temporada->episodios()->create(['numero' => $j]);
             }
         }
+        DB::commit();
 
         return $serie;
     }
 
     public function update(int $idSerie)
     {
-        $id = $idSerie;
-        $serie = Series::query()->where('id', '=', $id)->get();
+        DB::beginTransaction();
+        $serie = Series::query()->where('id', '=', $idSerie)->get();
         foreach ($serie as $key => $data);
+        DB::commit();
         return $data;
     }
 
     public function updated(int $idSerie, string $nomeSerie)
     {
-        $id = $idSerie;
-        $nome = $nomeSerie;
-        Series::where('id', '=', $id)->update(array(
-            'nome' => $nome
+        DB::beginTransaction();
+        Series::where('id', '=', $idSerie)->update(array(
+            'nome' => $nomeSerie
         ));
-
-        return $nome;
+        DB::commit();
+        return $nomeSerie;
     }
 
     public function delete(int $idSerie)
     {
-        $id = $idSerie;
-        $serie = Series::find($id);
+        DB::beginTransaction();
+        $serie = Series::find($idSerie);
         $serie->temporadas->each(function (Temporadas $temporadas) {
             $temporadas->episodios()->each(function (Episodios $episodios) {
                 $episodios->delete();
@@ -61,7 +63,7 @@ class SerieService
             $temporadas->delete();
         });
         $serie->delete();
-
+        DB::commit();
         return $serie;
     }
 }
