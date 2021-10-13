@@ -15,11 +15,9 @@
             <a href="{{ url ('/series/create')}}" class="btn btn-dark mb-4" name="" id="" role="button">
                 <i class="bi bi-plus-lg"></i>&nbsp;Adicionar
             </a>
-            @if (!empty($msg))
-            <div class="alert alert-info align-middle" role="alert">
-                <i class="bi bi-info-circle-fill">&nbsp;{!!$msg!!}</i>
-            </div>
-            @endif
+
+            @include('mensagem', ['msg' => $msg])
+
             <div class="table-responsive">
                 <h4 class="card-title">Lista de séries</h4>
                 <table class="table table-striped">
@@ -38,7 +36,11 @@
                         <tr>
                             <td class="align-middle">{{$serie->id}}</td>
                             <td class="align-middle">{{$serie->nome}} </td>
-                            <td class="align-middle"><span class="badge badge-secondary">{{$serie->temporadas->count()}}</span></td>
+                            <td class="align-middle">
+                                <span class="badge badge-secondary">
+                                    {{$serie->temporadas->count()}}
+                                </span>
+                            </td>
                             <td class="align-middle">
                                 <form method="post" action="/series/{{$serie->id}}/temporadas">
                                     @csrf

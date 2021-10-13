@@ -12,11 +12,7 @@
         <a href="{{url('/series')}}" class="btn btn-dark mb-4"  name="" id="" role="button">
             Voltar
         </a>
-        @if (!empty($msg))
-        <div class="alert alert-info align-middle" role="alert">
-            <i class="bi bi-info-circle-fill">&nbsp;{!!$msg!!}</i>
-        </div>
-        @endif
+
         <div class="table-responsive">
             <h2 class="card-title">Série {{$serie->nome}}</h2>
             <h4 class="card-title">Lista de temporadas</h4>
@@ -34,7 +30,11 @@
                     <tr>
                         <td class="align-middle">{{$tp->id}}</td>
                         <td class="align-middle"> Temporada {{$tp->numero}}</td>
-                        <td class="align-middle"><span class="badge badge-secondary">0 / {{$tp->episodios->count()}}</span></td>
+                        <td class="align-middle">
+                            <span class="badge badge-secondary">
+                                {{$tp->episodios->where('status','=',true)->count()}} / {{$tp->episodios->count()}}
+                            </span>
+                        </td>
                         <td class="align-middle">
                             <form method="post" action="/series/{{$serie->id}}/temporadas/{{$tp->id}}/episodios">
                                 @csrf

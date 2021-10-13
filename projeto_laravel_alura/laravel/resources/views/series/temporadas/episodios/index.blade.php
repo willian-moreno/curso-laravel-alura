@@ -10,20 +10,17 @@
 
 <div class="card ">
     <div class="card-body">
-        <a href="{{url()->previous()}}" class="btn btn-dark mb-4" name="" id="" role="button">
+        <a href="/series/{{$serie->id}}/temporadas" class="btn btn-dark mb-4" name="" id="" role="button">
             Voltar
         </a>
-        @if (!empty($msg))
-        <div class="alert alert-info align-middle" role="alert">
-            <i class="bi bi-info-circle-fill">&nbsp;{!!$msg!!}</i>
-        </div>
-        @endif
+
+        @include('mensagem', ['msg' => $msg])
+
         <div class="table-responsive">
             <h2 class="card-title">Série {{$serie->nome}}</h2>
             <h4 class="card-title">Lista de episódios - Temporada {{$temporada->numero}}</h4>
-            <form method="post">
+            <form method="post" action="/series/{{$serie->id}}/temporadas/{{$temporada->id}}/episodios/update/status">
                 @csrf
-                @method('put')
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -39,7 +36,7 @@
                             <td class="align-middle"> Episódio {{$ep->numero}}</td>
                             <td class="align-middle">
                                 <div class="form-check">
-                                    <input type="checkbox" name="status_episodio" id="status_episodio">
+                                    <input type="checkbox" name="status_episodio[]" value="{{$ep->id}}" {{$ep->status ? 'checked' : ''}}>
                                 </div>
                             </td>
                         </tr>

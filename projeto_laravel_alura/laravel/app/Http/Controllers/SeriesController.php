@@ -37,12 +37,11 @@ class SeriesController extends Controller
                 $request->qtd_temporadas,
                 $request->qtd_episodios
             );
-
             $request
                 ->session()
                 # O Flash permite que a sessao seja vista somente em uma requisicao;
                 ->flash(
-                    'status_serie',
+                'status_serie',
                     "A série <b>$serie->nome</b> foi a última adicionada!"
                 );
         } catch (\Throwable $th) {

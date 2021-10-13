@@ -33,6 +33,8 @@ Route::put('/series/update/{id}', [SeriesController::class, 'updated'])->name('a
 
 Route::delete('/series/{id}', [SeriesController::class, 'delete'])->name('deletar_serie');
 
-Route::get('/series/{id}/temporadas', [TemporadasController::class, 'index'])->name('post_temporadas');
+Route::get('/series/{id}/temporadas', [TemporadasController::class, 'index'])->name('temporadas_get');
 
-Route::get('/series/{id_serie}/temporadas/{id_temporada}/episodios', [EpisodiosController::class, 'index'])->name('post_episodios');
+Route::get('/series/{id_serie}/temporadas/{id_temporada}/episodios', [EpisodiosController::class, 'index'])->name('episodios_get');
+
+Route::post('/series/{id_serie}/temporadas/{id_temporada}/episodios/update/status', [EpisodiosController::class, 'updateStatus'])->name('episodios_status_put');

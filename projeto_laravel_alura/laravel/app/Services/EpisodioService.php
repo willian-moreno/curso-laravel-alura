@@ -17,4 +17,17 @@ class EpisodioService
         $values = compact('series', 'temporadas', 'episodios');
         return $values;
     }
+
+    public function setStatusEpisodios(int $id_temporada, $status_episodios)
+    {
+        DB::beginTransaction();
+        $temporada = Temporadas::find($id_temporada);
+        $temporada->episodios->each(function (Episodios $episodio) use (
+            $status_episodios
+        ) {
+            $episodio->status = in_array($episodio->id, $status_episodios);
+        });
+        $temporada->push();
+        DB::commit();
+    }
 }
