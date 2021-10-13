@@ -15,12 +15,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Psr\\Log\\": "Psr/Log/"
+            "Psr\\Log\\": "src"
         }
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.1.x-dev"
+            "dev-master": "2.0.x-dev"
         }
     }
 }

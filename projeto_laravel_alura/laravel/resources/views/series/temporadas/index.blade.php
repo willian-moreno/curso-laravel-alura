@@ -23,9 +23,10 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th class="col-1 h6 font-weight-bold">ID</th>
-                        <th class="col-10 h6 font-weight-bold">TEMPORADA</th>
-                        <th class="col-1"></th>
+                        <th class="col-1 h6 font-weight-bold text-uppercase">id</th>
+                        <th class="col-9 h6 font-weight-bold text-uppercase">temporada</th>
+                        <th class="col-1 text-uppercase"></th>
+                        <th class="col-1 text-uppercase"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,6 +34,7 @@
                     <tr>
                         <td class="align-middle">{{$tp->id}}</td>
                         <td class="align-middle"> Temporada {{$tp->numero}}</td>
+                        <td class="align-middle"><span class="badge badge-secondary">0 / {{$tp->episodios->count()}}</span></td>
                         <td class="align-middle">
                             <form method="post" action="/series/{{$serie->id}}/temporadas/{{$tp->id}}/episodios">
                                 @csrf

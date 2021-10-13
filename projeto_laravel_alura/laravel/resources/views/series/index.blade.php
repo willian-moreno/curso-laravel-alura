@@ -25,18 +25,20 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th class="col-1 h6 font-weight-bold">ID</th>
-                            <th class="col-8 h6 font-weight-bold">NOME</th>
-                            <th class="col-1"></th>
-                            <th class="col-1"></th>
-                            <th class="col-1"></th>
+                            <th class="col-1 h6 font-weight-bold text-uppercase">id</th>
+                            <th class="col-7 h6 font-weight-bold text-uppercase">nome</th>
+                            <th class="col-1 text-uppercase"></th>
+                            <th class="col-1 text-uppercase"></th>
+                            <th class="col-1 text-uppercase"></th>
+                            <th class="col-1 text-uppercase"></th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($series as $serie)
                         <tr>
                             <td class="align-middle">{{$serie->id}}</td>
-                            <td class="align-middle">{{$serie->nome}}</td>
+                            <td class="align-middle">{{$serie->nome}} </td>
+                            <td class="align-middle"><span class="badge badge-secondary">{{$serie->temporadas->count()}}</span></td>
                             <td class="align-middle">
                                 <form method="post" action="/series/{{$serie->id}}/temporadas">
                                     @csrf
