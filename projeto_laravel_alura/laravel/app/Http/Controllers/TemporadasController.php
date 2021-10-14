@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class TemporadasController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     function index(Request $request, TemporadaService $temporadaService)
     {
         $retorno = $temporadaService->getListTemporadas($request->id);

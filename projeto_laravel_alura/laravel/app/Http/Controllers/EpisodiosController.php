@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 
 class EpisodiosController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     function index(Request $request, EpisodioService $episodioService)
     {
         $values = $episodioService->getListEpisodios($request->id_serie, $request->id_temporada);

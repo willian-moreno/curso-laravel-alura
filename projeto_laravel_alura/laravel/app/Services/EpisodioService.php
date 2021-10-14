@@ -3,12 +3,17 @@
 namespace App\Services;
 
 use App\Models\{Series, Episodios, Temporadas};
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class EpisodioService
 {
     public function getListEpisodios(int $serieId, int $temporadaId)
     {
+        if (!Auth::check()) {
+            return redirect('/login');
+            exit();
+        }
         DB::beginTransaction();
         $series = Series::where('id', '=', $serieId)->get();
         $temporadas = Temporadas::where('id', '=', $temporadaId)->get();

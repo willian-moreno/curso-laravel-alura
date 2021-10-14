@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\{Series, Episodios, Temporadas};
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class SerieService

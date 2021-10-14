@@ -8,11 +8,19 @@ use App\Models\Episodios;
 use App\Models\Series;
 use App\Models\Temporadas;
 use App\Services\SerieService;
+use App\Services\VerifyAuthService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Mockery\Undefined;
 
 class SeriesController extends Controller
 {
+
+    function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     function index(Request $request, SerieService $serieService)
     {
         try {
@@ -41,7 +49,7 @@ class SeriesController extends Controller
                 ->session()
                 # O Flash permite que a sessao seja vista somente em uma requisicao;
                 ->flash(
-                'status_serie',
+                    'status_serie',
                     "A série <b>$serie->nome</b> foi a última adicionada!"
                 );
         } catch (\Throwable $th) {
