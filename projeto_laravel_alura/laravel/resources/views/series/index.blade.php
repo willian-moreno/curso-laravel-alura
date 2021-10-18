@@ -12,7 +12,7 @@
 <section class="cardsection">
     <div class="card ">
         <div class="card-body">
-            <a href="{{ url ('/series/create')}}" class="btn btn-dark mb-4" name="" id="" role="button">
+            <a href="{{ url ('/series/create')}}" class="btn btn-slategray mb-4" name="" id="" role="button">
                 <i class="bi bi-plus-lg"></i>&nbsp;Adicionar
             </a>
 
