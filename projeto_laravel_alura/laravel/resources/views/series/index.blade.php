@@ -45,7 +45,7 @@
                                 <form method="post" action="/series/{{$serie->id}}/temporadas">
                                     @csrf
                                     @method('get')
-                                    <button name="detalhes" type="submit" class="btn btn-link p-0">
+                                    <button name="detalhes" type="submit" class="btn btn-link shadow-none p-0">
                                         <i class="bi bi-three-dots"></i>
                                     </button>
                                 </form>
