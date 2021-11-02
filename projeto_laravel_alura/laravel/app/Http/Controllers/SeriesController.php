@@ -45,18 +45,14 @@ class SeriesController extends Controller
                 $request->qtd_temporadas,
                 $request->qtd_episodios
             );
-            $request
-                ->session()
-                # O Flash permite que a sessao seja vista somente em uma requisicao;
-                ->flash(
-                    'status_serie',
-                    "A série <b>$serie->nome</b> foi a última adicionada!"
-                );
+            $request->session()->flash('status_serie', "A série <b>$serie->nome</b> foi a última adicionada!");
+            $request->session()->flash('serie_adicionada', "A série <b>$serie->nome</b> foi adicionada com sucesso!");
+            $msg = $request->session()->get('serie_adicionada');
         } catch (\Throwable $th) {
             $request->session()->flash('status_serie', "Erro!: $th");
         } finally {
             if (!empty($request->nome)) {
-                return view('series.create', compact('serie'));
+                return view('series.create', compact('serie', 'msg'));
             }
         }
     }
@@ -79,7 +75,7 @@ class SeriesController extends Controller
         } catch (\Throwable $th) {
             $request->session()->flash('status_serie', "Erro!: $th");
         } finally {
-            return redirect('/series');
+            return redirect()->route('listar_series');
         }
     }
 
@@ -91,7 +87,7 @@ class SeriesController extends Controller
         } catch (\Throwable $th) {
             $request->session()->flash('status_serie', "Erro!: $th");
         } finally {
-            return redirect('/series');
+            return redirect()->route('listar_series');
         }
     }
 }

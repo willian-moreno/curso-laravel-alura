@@ -20,39 +20,40 @@ use App\Http\Controllers\SeriesController;
 use App\Http\Controllers\TemporadasController;
 use Illuminate\Support\Facades\Auth;
 
+Auth::routes();
+
 #Route::get('/', [HelloWorldController::class, 'helloWorld']);
 
-Route::get('/', [IndexController::class, 'index'])
+Route::get('/', function () {
+    return redirect('/home');
+});
+
+Route::get('/home', [IndexController::class, 'index'])
     ->name('index');
 
 Route::get('/series', [SeriesController::class, 'index'])
     ->name('listar_series');
 
 Route::get('/series/create', [SeriesController::class, 'create'])
-    ->name('criar_serie_get');
+    ->name('criar_serie');
 
 Route::post('/series/create', [SeriesController::class, 'store'])
-    ->name('criar_serie_post');
+    ->name('criar_serie');
 
 Route::post('/series/update/{id}', [SeriesController::class, 'update'])
-    ->name('atualizar_serie_post');
+    ->name('atualizar_serie');
 
 Route::put('/series/update/{id}', [SeriesController::class, 'updated'])
-    ->name('atualizar_serie_put');
+    ->name('atualizar_serie');
 
 Route::delete('/series/{id}', [SeriesController::class, 'delete'])
     ->name('deletar_serie');
 
 Route::get('/series/{id}/temporadas', [TemporadasController::class, 'index'])
-    ->name('temporadas_get');
+    ->name('listar_temporadas');
 
 Route::get('/series/{id_serie}/temporadas/{id_temporada}/episodios', [EpisodiosController::class, 'index'])
-    ->name('episodios_get');
+    ->name('listar_episodios');
 
 Route::post('/series/{id_serie}/temporadas/{id_temporada}/episodios/update/status', [EpisodiosController::class, 'updateStatus'])
-    ->name('episodios_status_put');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
-    ->name('home');
+    ->name('episodios_status');

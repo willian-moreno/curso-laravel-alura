@@ -1,39 +1,22 @@
-<!doctype html>
-<html lang="en">
+@extends('layouts.main')
 
-<head>
-    <title>Index</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+@section('linkcssmain')
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}">
+@endsection
 
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/app.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/global.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/index.css')}}">
-</head>
-
-<body>
-
+@section('conteudomain')
     @include('navbar')
-
-    <nav aria-label="breadcrumb" class="m-2">
-        <ol class="breadcrumb bg-light bg-gradient text-dark">
-            <li class="breadcrumb-item" aria-current="page">
-                <i class="bi bi-house-door-fill"></i>
-            </li>
-            @yield('breadcrumb')
-        </ol>
-    </nav>
-
-    <div class="contentall">
-        @yield('conteudo')
+    <div class="conteudoapp">
+        <nav aria-label="breadcrumb" class="m-2">
+            <ol class="breadcrumb bg-light bg-gradient text-dark">
+                <li class="breadcrumb-item" aria-current="page">
+                    <i class="bi bi-house-door-fill"></i>
+                </li>
+                @yield('breadcrumb')
+            </ol>
+        </nav>
+        <div class="conteudomain">
+            @yield('conteudo')
+        </div>
     </div>
-
-    <script src="{{URL::asset('js/jquery.js')}}"></script>
-    <script src="{{URL::asset('js/bootstrap.js')}}"></script>
-    <script src="{{URL::asset('js/bootstrap.min.js')}}"></script>
-    <script src="{{URL::asset('js/bootstrap.bundle.js')}}"></script>
-</body>
-
-</html>
+@endsection
